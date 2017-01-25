@@ -1,0 +1,57 @@
+{
+   "workflowApiVersion": "1.0",
+   "metaData": {
+       "icon": "images/jb-icon.jpg",
+       "iconSmall": "images/jb-icon.jpg",
+       "category": "messaging",
+	   "isConfigured":false
+   },
+   "type": "REST",
+   "lang": {
+       "en-US": {
+           "name": "{{ACTIVITY_NAME}}",
+           "description": "{{ACTIVITY_DESCRIPTION}}"
+       }
+   },
+   "arguments": {
+       "execute": {
+           "inArguments": [{ "eventData":"{{Context.PublicationId}}"}],
+           "outArguments": [],
+           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/execute",
+		   "verb": "POST",
+		   "body": "",
+            "format": "json",
+            "timeout": 3000,
+            "useJwt": true
+       }
+   },
+   "configurationArguments": {
+       "applicationExtensionKey": "{{KEY}}",
+       "save": {
+           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",
+		   "verb": "POST",
+			"body": "",
+            "format": "json",
+            "useJwt": false
+       },
+       "publish": {
+           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/publish",
+		   "verb": "POST",
+			"body": "",
+            "format": "json",
+            "useJwt": false
+       },
+       "validate": {
+           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/validate",
+		   "verb": "POST",
+			"body": "",
+            "format": "json",
+            "useJwt": false
+       }
+   },
+   "edit": {
+		"url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/",
+		"height": 400,
+		"width": 500
+	}
+}
