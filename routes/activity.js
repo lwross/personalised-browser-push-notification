@@ -6,10 +6,10 @@ var parseString = require('xml2js').parseString;
 var underscore = require('underscore');
 var request = require('request');
 
-const webpush = require('web-push');
+var webpush = require('web-push');
 
 // VAPID keys should only be generated only once.
-const vapidKeys = webpush.generateVAPIDKeys();
+var vapidKeys = webpush.generateVAPIDKeys();
 
 //var twilio = require('twilio')('ACCOUNT_SID', 'AUTH_TOKEN');
 var requestify = require('requestify');
