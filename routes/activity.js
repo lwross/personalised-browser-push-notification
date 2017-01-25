@@ -131,7 +131,9 @@ function isMC_API(url) {
 exports.execute = function( req, res ) {
 	//console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
 	//console.log('body',JSON.stringify(req.body));
-	
+	var vapidKeys = webpush.generateVAPIDKeys();
+console.log(vapidKeys);
+
 	/*
 	tests:
 	non-MC
