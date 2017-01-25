@@ -5,6 +5,12 @@ var util = require( 'util' );
 var parseString = require('xml2js').parseString;
 var underscore = require('underscore');
 var request = require('request');
+
+const webpush = require('web-push');
+
+// VAPID keys should only be generated only once.
+const vapidKeys = webpush.generateVAPIDKeys();
+
 //var twilio = require('twilio')('ACCOUNT_SID', 'AUTH_TOKEN');
 var requestify = require('requestify');
 var ET_Client = require( 'fuelsdk-node' );
@@ -88,6 +94,8 @@ exports.edit = function( req, res ) {
 exports.save = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
+
+    console.log(vapidKeys);
     res.send( 200, 'Save' );
 };
 
