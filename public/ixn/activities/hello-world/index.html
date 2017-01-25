@@ -8,6 +8,7 @@
 
 	<!--Styles-->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 <body>
 	<div id="step1" class="step">
@@ -15,11 +16,42 @@
 		<p/>
 		<h1>{{ACTIVITY_NAME}}</h1>
 		<p>{{ACTIVITY_DESCRIPTION}}</p>
-		<p>Method: {{REQUEST_METHOD}}</p>
-		<p>URL: {{REQUEST_URL}}</p>
-		<p>Click Done to complete configuration.</p>
-		<p/>        
+		<p/>  
+
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Body</th>
+				<th>Tag</th>
+			</tr>
+			<tr>
+				<td>
+					<select id="selectValueTier">
+						<option value="">Select an option</option>
+						<option value="Hello World Title">Hello World Title</option>
+					</select>
+				</td>
+				<td>
+					<select id="selectType">
+						<option value="">Select an option</option>
+						<option value="Hello World Body">Hello World Body</option>
+					</select>
+				</td>
+				<td>
+					<select id="selectBonus">
+						<option value="">Select an option</option>
+						<option value="personalised-push-demo-notification-tag">personalised-push-demo-notification-tag</option>
+					</select>
+				</td>
+			</tr>
+		</table>      
 	</div>
+	<div id="step2" class="step">
+		<p>Please review your settings.</p>
+		
+		Title: <span id="showValueTier"></span><br />
+		Body: <span id="showType"></span><br />
+		Tag: <span id="showBonus"></span><br />
+	</div>			
 </body>
 </html>
-
