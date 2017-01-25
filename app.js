@@ -13,6 +13,10 @@ var config      = require('./config/default');
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
 
+var webpush = require('web-push');
+// VAPID keys should only be generated only once.
+var vapidKeys = webpush.generateVAPIDKeys();
+
 var configjson  = require('./public/ixn/activities/hello-world/config.json');
 var indexhtml;
 fs.readFile('./public/ixn/activities/hello-world/index.html', "utf-8", function(err, html) {
