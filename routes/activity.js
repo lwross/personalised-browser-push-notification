@@ -136,11 +136,11 @@ exports.execute = function( req, res ) {
 	console.log(vapidKeys);
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
-	webpush.setVapidDetails(
-	  'mailto:lachlan.ross@salesforce.com',
-	  vapidKeys.publicKey,
-	  vapidKeys.privateKey
-	);
+webpush.setVapidDetails(
+  'mailto:lachlan.ross@salesforce.com',
+  vapidKeys.publicKey,
+  vapidKeys.privateKey
+);
 
 	console.log('vapidKeys', vapidKeys);
 
