@@ -93,9 +93,9 @@ exports.edit = function( req, res ) {
  */
 exports.save = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
+    console.log('req.body', req.body );
 
-    console.log(vapidKeys);
+    console.log('vapidKeys', vapidKeys);
     res.send( 200, 'Save' );
 };
 
@@ -129,20 +129,21 @@ function isMC_API(url) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function( req, res ) {
-	console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
+	//console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
+	console.log('req',JSON.stringify(req));
 	console.log('body',JSON.stringify(req.body));
 	
 	var vapidKeys = webpush.generateVAPIDKeys();
 	console.log(vapidKeys);
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
-webpush.setVapidDetails(
-  'mailto:lachlan.ross@salesforce.com',
-  vapidKeys.publicKey,
-  vapidKeys.privateKey
-);
+	webpush.setVapidDetails(
+	  'mailto:lachlan.ross@salesforce.com',
+	  vapidKeys.publicKey,
+	  vapidKeys.privateKey
+	);
 
-console.log(vapidKeys);
+	console.log('vapidKeys', vapidKeys);
 
 // This is the same output of calling JSON.stringify on a PushSubscription
 const pushSubscription = {
@@ -153,7 +154,7 @@ const pushSubscription = {
   }
 };
 
-console.log(pushSubscription);
+console.log('pushSubscription', pushSubscription);
 
 webpush.sendNotification(pushSubscription, JSON.stringify({
 	  title: 'Hello World Title',
@@ -271,7 +272,7 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
  */
 exports.publish = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );;
+    console.log( 'req.body', req.body );;
     res.send( 200, 'Publish' );
 };
 
