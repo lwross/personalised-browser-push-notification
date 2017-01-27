@@ -129,8 +129,7 @@ function isMC_API(url) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function( req, res ) {
-	//console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
-	console.log('req',JSON.stringify(req));
+	console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
 	console.log('body',JSON.stringify(req.body));
 	
 	var vapidKeys = webpush.generateVAPIDKeys();
@@ -272,7 +271,7 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
  */
 exports.publish = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
-    console.log( 'req.body', req.body );;
+    console.log( 'req.body', req.body );
     res.send( 200, 'Publish' );
 };
 
