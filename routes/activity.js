@@ -203,8 +203,8 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
 		}
 	}	
 
-	//console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
-	//console.log('oArgs',JSON.stringify(oArgs));
+	console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
+	console.log('oArgs',JSON.stringify(oArgs));
 	//console.log('token',req.session.token);
 	
 	var CLIENT_ID = 'myclientid';
