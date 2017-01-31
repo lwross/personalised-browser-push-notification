@@ -15,7 +15,11 @@
    },
    "arguments": {
        "execute": {
-           "inArguments": [{ "eventData":"{{Context.PublicationId}}"}],
+           "inArguments": [{ "eventData":"{{Context.PublicationId}}"},
+                { "emailAddress": "{{Contact.Default.Email}}"},
+                { "dataFromEventTrigger": "{{Event.SalesforceObj8e1ccb8d4df6cf8f3a0e82b6802a0763.myTriggerData}}"}  
+           ],
+
            "outArguments": [],
            "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/execute",
 		   "verb": "POST",
