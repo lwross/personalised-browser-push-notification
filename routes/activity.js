@@ -130,10 +130,10 @@ function isMC_API(url) {
  */
 exports.execute = function( req, res ) {
 	console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
-	console.log('body',JSON.stringify(req.body));
+	//console.log('body',JSON.stringify(req.body));
 	
 	var vapidKeys = webpush.generateVAPIDKeys();
-	console.log(vapidKeys);
+
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
 webpush.setVapidDetails(
@@ -203,9 +203,9 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
 		}
 	}	
 
-	console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
-	console.log('oArgs',JSON.stringify(oArgs));
-	console.log('token',req.session.token);
+	//console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
+	//console.log('oArgs',JSON.stringify(oArgs));
+	//console.log('token',req.session.token);
 	
 	var CLIENT_ID = 'myclientid';
 	var CLIENT_SECRET = 'myclientsecret';
