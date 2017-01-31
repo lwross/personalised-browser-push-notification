@@ -102,6 +102,7 @@ define( function( require ) {
         $('.step').hide();
         switch(step) {
             case 1:
+                console.log("step", 1);
                 $('#step1').show();
                 var valueTier = getValueTier();
                 var type = getType();
@@ -111,6 +112,7 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
             case 2:
+                console.log("step", 2);
                 $('#step2').show();
                 $('#showValueTier').html(getValueTierText());
                 $('#showType').html(getTypeText());
@@ -119,6 +121,7 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
             case 3: // Only 2 steps, so the equivalent of 'done' - send off the payload
+                console.log("step", 3);
                 save();
                 break;
         }
