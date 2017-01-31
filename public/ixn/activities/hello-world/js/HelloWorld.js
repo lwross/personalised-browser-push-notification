@@ -28,7 +28,7 @@ define( function( require ) {
 				}
 			}
 			//oArgs.amount will contain a value if this activity has already been configured:
-			amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;            
+			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;            
         }
         
 		$.get( "/version", function( data ) {
@@ -40,7 +40,7 @@ define( function( require ) {
             connection.trigger('updateButton', { button: 'next', enabled: false });
         }
 
-		$('#selectAmount').find('option[value='+ amount +']').attr('selected', 'selected');		
+		//$('#selectAmount').find('option[value='+ amount +']').attr('selected', 'selected');		
 		gotoStep(step);
         
     });
