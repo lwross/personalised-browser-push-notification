@@ -3,8 +3,7 @@
    "metaData": {
        "icon": "images/jb-icon.jpg",
        "iconSmall": "images/jb-icon.jpg",
-       "category": "messaging",
-	   "isConfigured":false
+       "category": "messaging"
    },
    "type": "REST",
    "lang": {
@@ -22,11 +21,12 @@
 
            "outArguments": [],
            "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/execute",
-		   "verb": "POST",
-		   "body": "",
+		       "verb": "POST",
+            "body": "",
+            "header": "",
             "format": "json",
-            "timeout": 3000,
-            "useJwt": true
+            "useJwt": false,
+            "timeout": 10
        }
    },
    "configurationArguments": {
