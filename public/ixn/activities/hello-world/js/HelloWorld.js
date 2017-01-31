@@ -159,6 +159,8 @@ define( function( require ) {
         toJbPayload['arguments'].execute.inArguments.push({"type": type});
         toJbPayload['arguments'].execute.inArguments.push({"bonus": bonus});
 
+        console.log(toJbPayload['arguments'].execute.inArguments);
+
 		/*
         toJbPayload['metaData'].things = 'stuff';
         toJbPayload['metaData'].icon = 'path/to/icon/set/from/iframe/icon.png';
