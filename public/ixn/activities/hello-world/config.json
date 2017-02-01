@@ -1,6 +1,7 @@
 {
-   "workflowApiVersion": "1.0",
+   "workflowApiVersion": "1.1",
    "metaData": {
+      "version": "2.0",
        "icon": "images/jb-icon.jpg",
        "iconSmall": "images/jb-icon.jpg",
        "category": "messaging"
@@ -14,8 +15,10 @@
    },
    "arguments": {
        "execute": {
-           "inArguments": [{ "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{Contact.Default.Email}}"},
+           "inArguments": [
+                {"myInArgument": "inArgument coming from iframe"},
+                { "eventData":"{{Context.PublicationId}}"},
+                { "emailAddress": "{{InteractionDefaults.Email}}"},
                 { "dataFromEventTrigger": "{{Event.SalesforceObj8e1ccb8d4df6cf8f3a0e82b6802a0763.myTriggerData}}"}  
            ],
 
