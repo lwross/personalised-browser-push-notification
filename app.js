@@ -93,7 +93,7 @@ app.post('/ixn/activities/hello-world/publish', activity.publish );
 //app.post('/ixn/activities/hello-world/execute/', tokenFromJWT, activity.execute );
 app.post('/ixn/activities/hello-world/execute', activity.execute );
 
-/*
+
 //replace template values with environment variables.
 app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	var appName = 'APP_NAME';
@@ -115,7 +115,7 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	json.lang['en-US'].description = configjson.lang['en-US'].description.replace(search,process.env[actDesc]);	
 	res.status(200).send( json );
 });
-*/
+
 
 app.get( '/version', function( req, res ) {
     res.setHeader( 'content-type', 'application/json' );
