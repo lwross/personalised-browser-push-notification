@@ -1,6 +1,6 @@
 {
   "name": "helloWorldTwo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -23,7 +23,7 @@
     "web-push": "^3.2.1"
   },
   "engines": {
-    "node": "^7.4.0"
+    "node": "0.10.7"
   },
   "license": "BSD-3-Clause"
 }
