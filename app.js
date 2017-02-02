@@ -12,6 +12,7 @@ var trigger     = require('./routes/trigger');
 var config      = require('./config/default');
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
+var pkgjson = require( './package.json' );
 
 var webpush = require('web-push');
 // VAPID keys should only be generated only once.
