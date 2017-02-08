@@ -184,9 +184,9 @@ exports.execute = function( req, res ) {
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
-	var title = oArgs.valueTier;
-	var body = oArgs.type;
-	var tag = oArgs.bonus;
+	var title = oArgs.valueTier || "Browser Push Notification";
+	var body = oArgs.type || "Hello There";
+	var tag = oArgs.bonus || "";
 
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
@@ -216,8 +216,10 @@ exports.execute = function( req, res ) {
 	      tag: tag
 	}));
 
+	res.send( 200, body );
 ////////////////////////////END BROWSER PUSH//////////////////////////
 	
+
 	var CLIENT_ID = 'myclientid';
 	var CLIENT_SECRET = 'myclientsecret';
 	var body = decodeURIComponent(process.env.REQUEST_BODY);
