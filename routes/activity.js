@@ -200,10 +200,10 @@ exports.execute = function( req, res ) {
 
 	// This is the same output of calling JSON.stringify on a PushSubscription
 	const pushSubscription = {
-	  endpoint: 'https://android.googleapis.com/gcm/send/fzEIfdnQrfU:APA91bH0lc8utkMIS23Bi1Ub2VtIJiC1gFyOrHlQtx0BbmNL5mB1wbeX3L3y7bBoinvZqNsMS4lsZfiAV6CvgjL-BnYxsn-4Fby2UtM-pTH0BhPPwNjUMZnt_iVSzR97U96hcBRLzSy5',
+	  endpoint: 'https://android.googleapis.com/gcm/send/cYFV8LMYWhM:APA91bF8qI4FTwgjw_JrA4EsfZr7ju5I1TAzTPnH_pY3rtGWAvkUFyhMdqUl1oLUjPG0L4SJ4agi0tbtF6zxf_UK5OM4Fw2YsHmNnLH8VJP40CrH7rasfurwMgO9Rn8Cm20filX3lDLY',
 	  keys: {
-	    auth: 'K1kWulifseUljBmEnK5Qjg==',
-	    p256dh: 'BJc5TsWIuOAq3OCd0am9apYU2hsSFrYsc6l-f6OxjjsFHQ8CuacD7uOaC98HC5YJJif40UGNg9xeLO3FdIeNDnk='
+	    auth: '3mS8VzOQzjmRcSDVvCcEIg==',
+	    p256dh: 'BL7nUOBPuiDncizvrqcLf5A48j7ELBQ8fHZRnYR6_tAuZRLQ1791ImZzQJYLj0JmqnOXrKVLCIWFDpj_dGfdBTo='
 	  }
 	};
 
