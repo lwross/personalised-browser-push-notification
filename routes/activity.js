@@ -218,7 +218,12 @@ exports.execute = function( req, res ) {
 
 	console.log('pushNotification',JSON.stringify(pushNotification));
 
-	webpush.sendNotification(pushSubscription, JSON.stringify(pushNotification));
+	webpush.sendNotification(pushSubscription, 
+		JSON.stringify(pushNotification)
+	).then(function (res){
+	    console.log('sendNotification Promise',res);
+	    console.log('Promise statusCode',res.statusCode);
+	  });
 
 	res.send( 200, body );
 ////////////////////////////END BROWSER PUSH//////////////////////////
