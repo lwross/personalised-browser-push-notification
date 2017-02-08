@@ -18,8 +18,7 @@
            "inArguments": [
                 {"myInArgument": "inArgument coming from iframe"},
                 { "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{InteractionDefaults.Email}}"},
-                { "dataFromEventTrigger": "{{Event.SalesforceObj8e1ccb8d4df6cf8f3a0e82b6802a0763.myTriggerData}}"}  
+                { "emailAddress": "{{InteractionDefaults.Email}}"}
            ],
 
            "outArguments": [],
