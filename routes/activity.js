@@ -209,12 +209,16 @@ exports.execute = function( req, res ) {
 
 	console.log('pushSubscription', pushSubscription);
 
-	webpush.sendNotification(pushSubscription, JSON.stringify({
+	var pushNotification = {
 		  title: title,
 	      body: body,
 	      icon: '/images/icon-192x192.png',
 	      tag: tag
-	}));
+	};
+
+	console.log('pushNotification',JSON.stringify(pushNotification));
+
+	webpush.sendNotification(pushSubscription, JSON.stringify(pushNotification));
 
 	res.send( 200, body );
 ////////////////////////////END BROWSER PUSH//////////////////////////
