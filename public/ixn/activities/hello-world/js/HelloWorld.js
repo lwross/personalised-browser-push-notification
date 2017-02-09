@@ -71,27 +71,27 @@ define( function( require ) {
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#selectValueTier').change(function() {
-            var valueTier = getValueTier();
-            var type = getType();
-            var bonus = getBonus();
-            var valid = Boolean(valueTier) && Boolean(bonus) && Boolean(type);
+        $('#userTitle').change(function() {
+            var title = getTitle();
+            var body = getBody();
+            var tag = getTag();
+            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
-        $('#selectType').change(function() {
-            var valueTier = getValueTier();
-            var type = getType();
-            var bonus = getBonus();
-            var valid = Boolean(valueTier) && Boolean(bonus) && Boolean(type);
+        $('#userBody').change(function() {
+            var title = getTitle();
+            var body = getBody();
+            var tag = getTag();
+            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
-        $('#selectBonus').change(function() {
-            var valueTier = getValueTier();
-            var type = getType();
-            var bonus = getBonus();
-            var valid = Boolean(valueTier) && Boolean(bonus) && Boolean(type);
+        $('#userTag').change(function() {
+            var title = getTitle();
+            var body = getBody();
+            var tag = getTag();
+            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -104,19 +104,19 @@ define( function( require ) {
             case 1:
                 console.log("step", 1);
                 $('#step1').show();
-                var valueTier = getValueTier();
-                var type = getType();
-                var bonus = getBonus();
-                var valid = Boolean(valueTier) && Boolean(bonus) && Boolean(type);
+                var title = getTitle();
+                var body = getBody();
+                var tag = getTag();
+                var valid = Boolean(title) && Boolean(tag) && Boolean(body);
                 connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
             case 2:
                 console.log("step", 2);
                 $('#step2').show();
-                $('#showValueTier').html(getValueTierText());
-                $('#showType').html(getTypeText());
-                $('#showBonus').html(getBonusText());
+                $('#showTitle').html(getTitle());
+                $('#showBody').html(getBody());
+                $('#showTag').html(getTag());
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
@@ -127,40 +127,30 @@ define( function( require ) {
         }
     };
 
-    function getValueTier() {
-        return $('#selectValueTier').find('option:selected').attr('value').trim();
+    function getTitle() {
+        return $('#userTitle').val().trim();
     };
-    function getType() {
-        return $('#selectType').find('option:selected').attr('value').trim();
+    function getBody() {
+        return $('#userBody').val().trim();
     };
-    function getBonus() {
-        return $('#selectBonus').find('option:selected').attr('value').trim();
-    };
-
-    function getValueTierText() {
-        return $('#selectValueTier').find('option:selected').text().trim();
-    };
-    function getTypeText() {
-        return $('#selectType').find('option:selected').text().trim();
-    };
-    function getBonusText() {
-        return $('#selectBonus').find('option:selected').text().trim();
+    function getTag() {
+        return $('#userTag').val().trim();
     };
 
     function save() {
 
-        var valueTier = getValueTier();
-        var type = getType();
-        var bonus = getBonus();
+        var title = getTitle();
+        var body = getBody();
+        var tag = getTag();
 
         // toJbPayload is initialized on populateFields above.  Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property may be overridden as desired.
         //toJbPayload.name = "my activity";
 
         //this will be sent into the custom activity body within the inArguments array.
-        toJbPayload['arguments'].execute.inArguments.push({"valueTier": valueTier});
-        toJbPayload['arguments'].execute.inArguments.push({"type": type});
-        toJbPayload['arguments'].execute.inArguments.push({"bonus": bonus});
+        toJbPayload['arguments'].execute.inArguments.push({"title": title});
+        toJbPayload['arguments'].execute.inArguments.push({"body": body});
+        toJbPayload['arguments'].execute.inArguments.push({"tag": tag});
 
         console.log("toJbPayload", toJbPayload['arguments'].execute.inArguments);
 
