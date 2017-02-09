@@ -1,7 +1,7 @@
 {
    "workflowApiVersion": "1.1",
    "metaData": {
-      "version": "2.2",
+      "version": "2.1",
        "icon": "images/jb-icon.jpg",
        "iconSmall": "images/jb-icon.jpg",
        "category": "messaging"
@@ -16,12 +16,9 @@
    "arguments": {
        "execute": {
            "inArguments": [
-                {"myInArgument": "inArgument coming from config.json"},
+                {"myInArgument": "inArgument coming from config json"},
                 { "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{InteractionDefaults.Email}}"},
-                { "p256dhKey":"{{Contact.Attribute.PHPSDKTEST.p256dhKey}}"},
-                { "authKey":"{{Contact.Attribute.PHPSDKTestDE.AuthKey}}"},
-                { "dataFromEventTrigger": "{{Event.ContactEvent-4ddea3e3-251e-92c2-db2c-08be56f5aac8.Subscription}}"}      
+                { "emailAddress": "{{InteractionDefaults.Email}}"}      
            ],
 
            "outArguments": [],
