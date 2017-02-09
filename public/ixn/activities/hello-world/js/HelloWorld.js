@@ -71,7 +71,7 @@ define( function( require ) {
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#userTitle').change(function() {
+        $('#userTitle').keyup(function() {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
@@ -79,7 +79,7 @@ define( function( require ) {
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
-        $('#userBody').change(function() {
+        $('#userBody').keyup(function() {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
@@ -87,7 +87,7 @@ define( function( require ) {
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
-        $('#userTag').change(function() {
+        $('#userTag').keyup(function() {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
