@@ -16,7 +16,7 @@
    "arguments": {
        "execute": {
            "inArguments": [
-                {"myInArgument": "inArgument coming from iframe"},
+                {"myInArgument": "inArgument coming from config.json"},
                 { "eventData":"{{Context.PublicationId}}"},
                 { "emailAddress": "{{InteractionDefaults.Email}}"},
                 { "p256dhKey":"{{Contact.Attribute.PHPSDKTEST.p256dhKey}}"},
