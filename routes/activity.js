@@ -184,9 +184,9 @@ exports.execute = function( req, res ) {
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
-	var title = oArgs.valueTier || "Browser Push Notification";
-	var body = oArgs.type || "Hello There";
-	var tag = oArgs.bonus || "";
+	var title = oArgs.title || "Browser Push Notification";
+	var body = oArgs.body || "Hello There";
+	var tag = oArgs.tag || "";
 
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
