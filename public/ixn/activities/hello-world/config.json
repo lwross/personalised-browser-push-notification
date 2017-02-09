@@ -18,7 +18,10 @@
            "inArguments": [
                 {"myInArgument": "inArgument coming from iframe"},
                 { "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{InteractionDefaults.Email}}"}
+                { "emailAddress": "{{InteractionDefaults.Email}}"},
+                { "p256dhKey":"{{Contact.Attribute.PHPSDKTEST.p256dh Key}}"},
+                { "authKey":"{{Contact.Attribute.PHPSDKTestDE.Auth Key}}"},
+                { "dataFromEventTrigger": "{{Event.ContactEvent-5b10636d-fa80-15dc-b3b9-5e6d5a3727cb.Subscription}}"}      
            ],
 
            "outArguments": [],
