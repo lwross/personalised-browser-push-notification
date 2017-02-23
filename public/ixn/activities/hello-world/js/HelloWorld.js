@@ -133,7 +133,7 @@ define( function( require ) {
                 var icon = getIcon();
                 var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
                 connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
-                connection.trigger('updateButton', { button: 'back', visible: false });
+                connection.trigger('updateButton', { button: 'back', visible: true });
                 break;
             case 3:
                 console.log("step", 3);
