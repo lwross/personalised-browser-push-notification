@@ -184,9 +184,18 @@ exports.execute = function( req, res ) {
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
-	var title = oArgs.valueTier || "Browser Push Notification";
-	var body = oArgs.type || "Hello There";
-	var tag = oArgs.bonus || "";
+	var title = oArgs.title || "Browser Push Notification";
+	var body = oArgs.body || "Hello There";
+	var tag = oArgs.tag || "";
+	var p256dh = oArgs.p256dh;
+	var auth = oArgs.auth;
+	var subscriptionID = oArgs.subscriptionID;
+	var endpoint = "https://android.googleapis.com/gcm/send/" + subscriptionID;
+
+	console.log('p256dh', p256dh);
+	console.log('auth', auth);
+	console.log('subscriptionID', subscriptionID);
+	console.log('endpoint', endpoint);
 
 
 	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
@@ -200,10 +209,10 @@ exports.execute = function( req, res ) {
 
 	// This is the same output of calling JSON.stringify on a PushSubscription
 	const pushSubscription = {
-	  endpoint: 'https://android.googleapis.com/gcm/send/cYFV8LMYWhM:APA91bF8qI4FTwgjw_JrA4EsfZr7ju5I1TAzTPnH_pY3rtGWAvkUFyhMdqUl1oLUjPG0L4SJ4agi0tbtF6zxf_UK5OM4Fw2YsHmNnLH8VJP40CrH7rasfurwMgO9Rn8Cm20filX3lDLY',
+	  endpoint: endpoint,
 	  keys: {
-	    auth: '3mS8VzOQzjmRcSDVvCcEIg==',
-	    p256dh: 'BL7nUOBPuiDncizvrqcLf5A48j7ELBQ8fHZRnYR6_tAuZRLQ1791ImZzQJYLj0JmqnOXrKVLCIWFDpj_dGfdBTo='
+	    auth: auth,
+	    p256dh: p256dh
 	  }
 	};
 
