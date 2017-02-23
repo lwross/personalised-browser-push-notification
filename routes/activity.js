@@ -187,6 +187,7 @@ exports.execute = function( req, res ) {
 	var title = oArgs.title || "Browser Push Notification";
 	var body = oArgs.body || "Hello There";
 	var tag = oArgs.tag || "";
+	var icon = oArgs.icon || "/images/icon-192x192.png";
 	var p256dh = oArgs.p256dh;
 	var auth = oArgs.auth;
 	var subscriptionID = oArgs.subscriptionID;
@@ -221,7 +222,7 @@ exports.execute = function( req, res ) {
 	var pushNotification = {
 		  title: title,
 	      body: body,
-	      icon: 'http://cdn.iconscout.com/public/images/icon/free/png-192/pile-comic-dung-face-monster-poo-poop-355f2d0e14051b1f-192x192.png',
+	      icon: icon,
 	      tag: tag
 	};
 
