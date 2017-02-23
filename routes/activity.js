@@ -221,7 +221,7 @@ exports.execute = function( req, res ) {
 	var pushNotification = {
 		  title: title,
 	      body: body,
-	      icon: '/images/icon-192x192.png',
+	      icon: 'http://cdn.iconscout.com/public/images/icon/free/png-192/pile-comic-dung-face-monster-poo-poop-355f2d0e14051b1f-192x192.png',
 	      tag: tag
 	};
 
