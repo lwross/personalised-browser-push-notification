@@ -130,7 +130,7 @@ define( function( require ) {
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
                 $('#showTag').html(getTag());
-                $('#showIcon').html(getIcon());
+                $('#showIcon').html(getIcon(true));
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
