@@ -136,7 +136,7 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
             case 3:
-                console.log("step", 2);
+                console.log("step", 3);
                 $('#step2').show();
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
@@ -145,7 +145,7 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
-            case 3: // Only 2 steps, so the equivalent of 'done' - send off the payload
+            case 4: // Only 2 steps, so the equivalent of 'done' - send off the payload
                 console.log("step", 3);
                 save();
                 break;
