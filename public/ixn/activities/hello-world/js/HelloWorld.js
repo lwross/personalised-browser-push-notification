@@ -137,7 +137,7 @@ define( function( require ) {
                 break;
             case 3:
                 console.log("step", 3);
-                $('#step2').show();
+                $('#step3').show();
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
                 $('#showTag').html(getTag());
