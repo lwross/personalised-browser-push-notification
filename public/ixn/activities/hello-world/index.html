@@ -18,36 +18,66 @@
 		<p>{{ACTIVITY_DESCRIPTION}}</p>
 		<p/>  
 
-		<table>
+		<table border="1">
 			<tr>
 				<th>Title</th>
-				<th>Body</th>
-				<th>Tag</th>
-				<th>Icon</th>
+				<td><input id="userTitle" type="text" /></td>
 			</tr>
 			<tr>
-				<td>
-					<input id="userTitle" type="text" />
-				</td>
-				<td>
-					<input id="userBody" type="text" />
-				</td>
-				<td>
-					<input id="userTag" type="text" />
-				</td>
-				<td>
-					<input id="userIcon" type="text" />
-				</td>
+				<th>Body</th>
+				<td><input id="userBody" type="text" /></td>
+			</tr>
+			<tr>
+				<th>Tag</th>
+				<td><input id="userTag" type="text" /></td>
+			</tr>
+			<tr>
+				<th>Icon</th>
+				<td><input id="userIcon" type="text" /></td>
 			</tr>
 		</table>      
 	</div>
 	<div id="step2" class="step">
+		<table border="1">
+			<tr>
+				<th colspan="2">Action 1</th>
+			</tr>
+			<tr>
+				<th>Action</th>
+				<td><input id="userAction1" type="text" /></td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td><input id="userActionTitle1" type="text" /></td>
+			</tr>
+			<tr>
+				<th>Icon</th>
+				<td><input id="userActionIcon1" type="text" /></td>
+			</tr>
+			<tr>
+				<th colspan="2">Action 2</th>
+			</tr>
+			<tr>
+				<th>Action</th>
+				<td><input id="userAction2" type="text" /></td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td><input id="userActionTitle2" type="text" /></td>
+			<tr>
+			<tr>
+				<th>Icon</th>
+				<td><input id="userActionIcon1" type="text" /></td>
+			</tr>
+		</table>  
+	</div>	
+	<div id="step3" class="step">
 		<p>Please review your settings.</p>
 		
 		Title: <span id="showTitle"></span><br />
 		Body: <span id="showBody"></span><br />
 		Tag: <span id="showTag"></span><br />
 		Icon: <span id="showIcon"></span><br />
-	</div>			
+	</div>	
 </body>
 </html>

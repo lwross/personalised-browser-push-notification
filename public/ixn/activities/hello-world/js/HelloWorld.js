@@ -127,6 +127,17 @@ define( function( require ) {
             case 2:
                 console.log("step", 2);
                 $('#step2').show();
+                var title = getTitle();
+                var body = getBody();
+                var tag = getTag();
+                var icon = getIcon();
+                var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+                connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
+                connection.trigger('updateButton', { button: 'back', visible: false });
+                break;
+            case 3:
+                console.log("step", 2);
+                $('#step2').show();
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
                 $('#showTag').html(getTag());
