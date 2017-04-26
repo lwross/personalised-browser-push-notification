@@ -7,10 +7,15 @@
 	<script data-main="js/main.js" src="js/require.js"></script>
 
 	<!--Styles-->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
 </head>
 <body>
+
+	
+
+
+
 	<form autocomplete="off" name="lastpass-disable-search">
 	<div id="step1" class="step">
 		<p><small id="version"></small></p>
@@ -19,66 +24,102 @@
 		<p>{{ACTIVITY_DESCRIPTION}}</p>
 		<p/>  
 
-		<table border="1">
-			<tr>
-				<th>Title</th>
-				<td><input id="userTitle" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Body</th>
-				<td><input id="userBody" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Tag</th>
-				<td><input id="userTag" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Icon</th>
-				<td><input id="userIcon" type="text" /></td>
-			</tr>
-		</table>      
+		<table border="0" width="90%" align="center">
+			<tr><td>
+			<div class="form-group" >
+		        <label for="userTitle">Title</label>
+		        <input type="text" class="form-control" id="userTitle" placeholder="Title">
+		    </div>
+		    <div class="form-group">
+		        <label for="userBody">Body</label>
+		        <input type="text" class="form-control" id="userBody" placeholder="Body">
+		    </div>
+		    <div class="form-group">
+		        <label for="userTag">Tag</label>
+		        <input type="text" class="form-control" id="userTag" placeholder="Tag">
+		    </div>
+		    <div class="form-group">
+		        <label for="userIcon">Icon URL</label>
+		        <input type="text" class="form-control" id="userIcon" placeholder="Icon URL">
+		    </div>
+		    </td></tr>
+		</table>  
+
 	</div>
 	<div id="step2" class="step">
-		<table border="1">
-			<tr>
-				<th colspan="2">Action 1</th>
-			</tr>
-			<tr>
-				<th>Action</th>
-				<td><input id="userAction1" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Title</th>
-				<td><input id="userActionTitle1" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Icon</th>
-				<td><input id="userActionIcon1" type="text" /></td>
-			</tr>
-			<tr>
-				<th colspan="2">Action 2</th>
-			</tr>
-			<tr>
-				<th>Action</th>
-				<td><input id="userAction2" type="text" /></td>
-			</tr>
-			<tr>
-				<th>Title</th>
-				<td><input id="userActionTitle2" type="text" /></td>
-			<tr>
-			<tr>
-				<th>Icon</th>
-				<td><input id="userActionIcon1" type="text" /></td>
-			</tr>
-		</table>  
+
+		<table border="0" width="90%" align="center">
+			<tr><td>
+			<legend>Action 1</legend>
+			<div class="form-group" >
+		        <label for="userAction1">Action</label>
+		        <input type="text" class="form-control" id="userAction1" placeholder="Action">
+		    </div>
+		    <div class="form-group">
+		        <label for="userActionTitle1">Title</label>
+		        <input type="text" class="form-control" id="userActionTitle1" placeholder="Title">
+		    </div>
+		    <div class="form-group">
+		        <label for="userActionIcon1">Icon</label>
+		        <input type="text" class="form-control" id="userActionIcon1" placeholder="Icon">
+		    </div>	
+			<legend>Action 2</legend>
+		    <div class="form-group" >
+		        <label for="userAction2">Action</label>
+		        <input type="text" class="form-control" id="userAction2" placeholder="Action">
+		    </div>
+		    <div class="form-group">
+		        <label for="userActionTitle2">Title</label>
+		        <input type="text" class="form-control" id="userActionTitle2" placeholder="Title">
+		    </div>
+		    <div class="form-group">
+		        <label for="userActionIcon2">Icon</label>
+		        <input type="text" class="form-control" id="userActionIcon2" placeholder="Icon">
+		    </div>		 	 
+		    </td></tr>
+		</table>   
 	</div>	
+
+
 	<div id="step3" class="step">
+		<table border="0" width="90%" align="center">
+			<tr><td>
+		  <legend>Please review your settings</legend>
+		  <div class="form-group row">
+		    <label class="col-sm-2 col-form-label">Title</label>
+		    <div class="col-sm-10">
+		      <p class="form-control-static" id="showTitle"></p>
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-2 col-form-label">Body</label>
+		    <div class="col-sm-10">
+		      <p class="form-control-static" id="showBody"></p>
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-2 col-form-label">Tag</label>
+		    <div class="col-sm-10">
+		      <p class="form-control-static" id="showTag"></p>
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-2 col-form-label">Icon</label>
+		    <div class="col-sm-10">
+		      <p class="form-control-static" id="showIcon"></p>
+		    </div>
+		  </div>
+		  </td></tr>
+		</table>   
+		
+<!--
 		<p>Please review your settings.</p>
 		
 		Title: <span id="showTitle"></span><br />
 		Body: <span id="showBody"></span><br />
 		Tag: <span id="showTag"></span><br />
 		Icon: <span id="showIcon"></span><br />
+	-->
 	</div>	
 	</form>
 </body>
