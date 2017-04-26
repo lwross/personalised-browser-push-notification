@@ -27,6 +27,7 @@ define( function( require ) {
 					oArgs[key] = aArgs[i][key]; 
 				}
 			}
+            console.log("oArgs",oArgs);
 			//oArgs.amount will contain a value if this activity has already been configured:
 			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;            
         }
