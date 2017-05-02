@@ -28,8 +28,18 @@ define( function( require ) {
 				}
 			}
             console.log("oArgs",oArgs);
+
+            setTitle(oArgs.title ? oArgs.title : "");
+            setTag(oArgs.tag ? oArgs.tag : "" );
+            setBody(oArgs.body ? oArgs.body : "");
+            setIcon(oArgs.icon ? oArgs.icon : "");
+
 			//oArgs.amount will contain a value if this activity has already been configured:
-			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;            
+			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;  
+
+            if (oArgs.body != undefined) {
+                $('#userBody').value = oArgs.body;
+            }          
         }
         
 		$.get( "/version", function( data ) {
@@ -113,9 +123,9 @@ define( function( require ) {
 
     function gotoStep(step) {
         $('.step').hide();
+        console.log("step", step);
         switch(step) {
-            case 1:
-                console.log("step", 1);
+            case 1:              
                 $('#step1').show();
                 var title = getTitle();
                 var body = getBody();
@@ -126,7 +136,6 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
             case 2:
-                console.log("step", 2);
                 $('#step2').show();
                 var title = getTitle();
                 var body = getBody();
@@ -137,7 +146,6 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 break;
             case 3:
-                console.log("step", 3);
                 $('#step3').show();
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
@@ -147,12 +155,23 @@ define( function( require ) {
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
             case 4: // Only 2 steps, so the equivalent of 'done' - send off the payload
-                console.log("step", 3);
                 save();
                 break;
         }
     };
 
+    function setTitle(val) {
+        return $('#userTitle').val(val);
+    };
+    function setBody(val) {
+        return $('#userBody').val(val);
+    };
+    function setTag(val) {
+        return $('#userTag').val(val);
+    };
+    function setIcon(val) {
+        return $('#userIcon').val(val);
+    };
     function getTitle() {
         return $('#userTitle').val().trim();
     };
