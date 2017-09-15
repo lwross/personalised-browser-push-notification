@@ -87,7 +87,7 @@ define( function( require ) {
             var body = getBody();
             var tag = getTag();
             var icon = getIcon();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -96,7 +96,7 @@ define( function( require ) {
             var body = getBody();
             var tag = getTag();
             var icon = getIcon();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -105,7 +105,7 @@ define( function( require ) {
             var body = getBody();
             var tag = getTag();
             var icon = getIcon();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -114,7 +114,7 @@ define( function( require ) {
             var body = getBody();
             var tag = getTag();
             var icon = getIcon();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -131,7 +131,7 @@ define( function( require ) {
                 var body = getBody();
                 var tag = getTag();
                 var icon = getIcon();
-                var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+                var valid = Boolean(title) && Boolean(body);
                 connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
@@ -141,7 +141,7 @@ define( function( require ) {
                 var body = getBody();
                 var tag = getTag();
                 var icon = getIcon();
-                var valid = Boolean(title) && Boolean(tag) && Boolean(body) && Boolean(icon);
+                var valid = Boolean(title) && Boolean(body);
                 connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 break;
