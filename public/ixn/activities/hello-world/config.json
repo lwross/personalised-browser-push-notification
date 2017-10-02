@@ -17,11 +17,11 @@
        "execute": {
            "inArguments": [
                 {"myInArgument": "inArgument coming from config json"},
-                { "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{InteractionDefaults.Email}}"} ,
-                { "subscriptionID":"{{Contact.Attribute.BrowserPushSubscribers.SubscriptionID}}"},
-                { "auth":"{{Contact.Attribute.BrowserPushSubscribers.AuthKey}}"},
-                { "p256dh":"{{Contact.Attribute.BrowserPushSubscribers.p256dhKey}}"}     
+                {"eventData":"{{Context.PublicationId}}"},
+                {"emailAddress": "{{InteractionDefaults.Email}}"} ,
+                {"subscriptionID":"{{Contact.Attribute.BrowserPushSubscribers.SubscriptionID}}"},
+                {"auth":"{{Contact.Attribute.BrowserPushSubscribers.AuthKey}}"},
+                {"p256dh":"{{Contact.Attribute.BrowserPushSubscribers.p256dhKey}}"}     
            ],
 
            "outArguments": [],
