@@ -94,7 +94,7 @@ exports.edit = function( req, res ) {
 exports.save = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
     console.log('req.body', req.body );
-
+	console.log('YOUR_EMAIL_ADDRESS', process.env.YOUR_EMAIL_ADDRESS)
     console.log('vapidKeys', vapidKeys);
     res.send( 200, 'Save' );
 };
