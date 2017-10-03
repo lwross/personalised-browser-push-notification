@@ -4,7 +4,7 @@ Based on [http-activity by Jimmy Burgess](https://github.com/salesforce-marketin
 
 
 # Journey Builder
-## Custom Interaction - Hello World
+## Custom Interaction - Browser Push
 
 **NOTE:** You won't be able to run this locally. It is intended to be run on a publicly available web server/cloud only.
 
