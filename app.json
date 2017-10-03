@@ -2,18 +2,41 @@
   "name": "Web Push JB Custom Activity",
   "description": "Create a Web Push Journey Builder Custom Activity.",
   "repository": "https://github.com/lwross/personalised-browser-push-notification",
-  "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
+  "keywords": [
+    "journey",
+    "builder",
+    "marketing",
+    "cloud",
+    "custom",
+    "activity",
+    "salesforce"
+  ],
   "logo": "http://image.s6.exacttarget.com/lib/fe9112727360007b77/m/1/Salesforce_Marketing_Cloud.png",
   "env": {
-  	"APP_NAME":null,
-  	"APP_CENTER_KEY":null,
-  	"ACTIVITY_NAME":{
-  		"required":false
-  	},
+  	"HEROKU_APP_NAME": {
+      "description": "Name of the Heroku application above (either Heroku default or your custom name)."
+    },
+  	"APP_CENTER_KEY": {
+      "description": "Application extension key - this must match exactly what is entered into the Journey Builder creation screen in MC App Center.",
+      "required": "true"
+    },
+  	"ACTIVITY_NAME": {
+      "description": "Name of the Custom Activity in Journey Builder.",
+      "required": false,
+      "value": "Web Push"
+    },
   	"ACTIVITY_DESCRIPTION":{
-  		"required":false
-  	},
-    "GCM_SERVER_KEY":null,
-    "YOUR_EMAIL_ADDRESS":null
+      "description": "Description of the Custom Activity purpose or usage.",
+      "required": false,
+      "value": "This Activity will send a web browser push notification."
+    },
+    "GCM_SERVER_KEY":{
+      "description": "Google Cloud Messaging Server Key.  Can be found https://console.firebase.google.com in YourProject->Settings->CLOUD MESSAGING",
+      "required": "true"
+    },
+    "YOUR_EMAIL_ADDRESS": {
+      "description": "Your email address.  Used by the message encryption engine",
+      "required": "true"
+    }
   }
 }
