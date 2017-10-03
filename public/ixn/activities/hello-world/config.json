@@ -35,7 +35,7 @@
        }
    },
    "configurationArguments": {
-       "applicationExtensionKey": "{{KEY}}",
+       "applicationExtensionKey": "{{APP_CENTER_KEY}}",
        "defaults": { "example_default_key": "example_default_value"},
        "save": {
            "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",

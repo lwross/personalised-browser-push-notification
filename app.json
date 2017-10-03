@@ -18,7 +18,7 @@
   		"required":false
   	},
   	"APP_NAME":null,
-  	"KEY":null,
+  	"APP_CENTER_KEY":null,
   	"ACTIVITY_NAME":{
   		"required":false
   	},
