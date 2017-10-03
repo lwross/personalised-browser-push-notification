@@ -27,8 +27,19 @@ define( function( require ) {
 					oArgs[key] = aArgs[i][key]; 
 				}
 			}
+            console.log("oArgs",oArgs);
+
+            setTitle(oArgs.title ? oArgs.title : "");
+            setTag(oArgs.tag ? oArgs.tag : "" );
+            setBody(oArgs.body ? oArgs.body : "");
+            setIcon(oArgs.icon ? oArgs.icon : "");
+
 			//oArgs.amount will contain a value if this activity has already been configured:
-			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;            
+			//amount = oArgs.amount || toJbPayload['configurationArguments'].defaults.amount;  
+
+            if (oArgs.body != undefined) {
+                $('#userBody').value = oArgs.body;
+            }          
         }
         
 		$.get( "/version", function( data ) {
@@ -75,7 +86,8 @@ define( function( require ) {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
+            var icon = getIcon();
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -83,7 +95,8 @@ define( function( require ) {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
+            var icon = getIcon();
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -91,7 +104,17 @@ define( function( require ) {
             var title = getTitle();
             var body = getBody();
             var tag = getTag();
-            var valid = Boolean(title) && Boolean(tag) && Boolean(body);
+            var icon = getIcon();
+            var valid = Boolean(title) && Boolean(body);
+            connection.trigger('updateButton', { button: 'next', enabled: valid });
+        });
+
+        $('#userIcon').keyup(function() {
+            var title = getTitle();
+            var body = getBody();
+            var tag = getTag();
+            var icon = getIcon();
+            var valid = Boolean(title) && Boolean(body);
             connection.trigger('updateButton', { button: 'next', enabled: valid });
         });
 
@@ -100,33 +123,55 @@ define( function( require ) {
 
     function gotoStep(step) {
         $('.step').hide();
+        console.log("step", step);
         switch(step) {
-            case 1:
-                console.log("step", 1);
+            case 1:              
                 $('#step1').show();
                 var title = getTitle();
                 var body = getBody();
                 var tag = getTag();
-                var valid = Boolean(title) && Boolean(tag) && Boolean(body);
+                var icon = getIcon();
+                var valid = Boolean(title) && Boolean(body);
                 connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
                 connection.trigger('updateButton', { button: 'back', visible: false });
                 break;
             case 2:
-                console.log("step", 2);
                 $('#step2').show();
+                var title = getTitle();
+                var body = getBody();
+                var tag = getTag();
+                var icon = getIcon();
+                var valid = Boolean(title) && Boolean(body);
+                connection.trigger('updateButton', { button: 'next', text: 'next', enabled: valid });
+                connection.trigger('updateButton', { button: 'back', visible: true });
+                break;
+            case 3:
+                $('#step3').show();
                 $('#showTitle').html(getTitle());
                 $('#showBody').html(getBody());
                 $('#showTag').html(getTag());
+                $('#showIcon').html(getIcon(true));
                 connection.trigger('updateButton', { button: 'back', visible: true });
                 connection.trigger('updateButton', { button: 'next', text: 'done', visible: true });
                 break;
-            case 3: // Only 2 steps, so the equivalent of 'done' - send off the payload
-                console.log("step", 3);
+            case 4: // Only 2 steps, so the equivalent of 'done' - send off the payload
                 save();
                 break;
         }
     };
 
+    function setTitle(val) {
+        return $('#userTitle').val(val);
+    };
+    function setBody(val) {
+        return $('#userBody').val(val);
+    };
+    function setTag(val) {
+        return $('#userTag').val(val);
+    };
+    function setIcon(val) {
+        return $('#userIcon').val(val);
+    };
     function getTitle() {
         return $('#userTitle').val().trim();
     };
@@ -136,12 +181,22 @@ define( function( require ) {
     function getTag() {
         return $('#userTag').val().trim();
     };
+    function getIcon(asImg) {
+        asImg = asImg == undefined ? false : asImg;
+        var rv = $('#userIcon').val().trim();
+        if (asImg) {
+            var img = '<img src="' + rv + '" />';
+            rv = img;
+        } 
+        return rv;
+    };
 
     function save() {
 
         var title = getTitle();
         var body = getBody();
         var tag = getTag();
+        var icon = getIcon();
 
         // toJbPayload is initialized on populateFields above.  Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property may be overridden as desired.
@@ -151,6 +206,7 @@ define( function( require ) {
         toJbPayload['arguments'].execute.inArguments.push({"title": title});
         toJbPayload['arguments'].execute.inArguments.push({"body": body});
         toJbPayload['arguments'].execute.inArguments.push({"tag": tag});
+        toJbPayload['arguments'].execute.inArguments.push({"icon": icon});
 
         console.log("toJbPayload", toJbPayload['arguments'].execute.inArguments);
 

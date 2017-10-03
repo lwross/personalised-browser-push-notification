@@ -1,4 +1,6 @@
-copied from http-activity by Jimmy Burgess.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Based on [http-activity by Jimmy Burgess](https://github.com/salesforce-marketingcloud/http-request).
 
 
 # Journey Builder

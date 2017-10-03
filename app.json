@@ -1,7 +1,7 @@
 {
-  "name": "Salesforce JB Custom Activity",
-  "description": "Create a Journey Builder Custom Activity for making an http request.",
-  "repository": "https://github.com/timsim00/http-request",
+  "name": "Web Push JB Custom Activity",
+  "description": "Create a Web Push Journey Builder Custom Activity.",
+  "repository": "https://github.com/lwross/personalised-browser-push-notification",
   "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
   "logo": "http://image.s6.exacttarget.com/lib/fe9112727360007b77/m/1/Salesforce_Marketing_Cloud.png",
   "env": {
@@ -24,6 +24,8 @@
   	},
   	"ACTIVITY_DESCRIPTION":{
   		"required":false
-  	}
+  	},
+    "GCM_SERVER_KEY":null,
+    "YOUR_EMAIL_ADDRESS":null
   }
 }

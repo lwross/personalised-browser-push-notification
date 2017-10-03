@@ -94,7 +94,6 @@ exports.edit = function( req, res ) {
 exports.save = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
     console.log('req.body', req.body );
-
     console.log('vapidKeys', vapidKeys);
     res.send( 200, 'Save' );
 };
@@ -187,6 +186,7 @@ exports.execute = function( req, res ) {
 	var title = oArgs.title || "Browser Push Notification";
 	var body = oArgs.body || "Hello There";
 	var tag = oArgs.tag || "";
+	var icon = oArgs.icon || "/images/icon-192x192.png";
 	var p256dh = oArgs.p256dh;
 	var auth = oArgs.auth;
 	var subscriptionID = oArgs.subscriptionID;
@@ -198,9 +198,9 @@ exports.execute = function( req, res ) {
 	console.log('endpoint', endpoint);
 
 
-	webpush.setGCMAPIKey('AAAAEzBWVWU:APA91bH8wdRRiOtqdSAfLjrXlb1jmuvr_UExaeI9QDdjdiop_nSPHXUX0cfM-khb1qcm8V9uV61BLhibMxjkgeOHLtKMp2Z7zG8PMLO4iBZVx2SQ8jAKVia20RSL4nPEdhHZMkKbDrCYkxRJG5vX5T8DQPzFEunLXg');
+	webpush.setGCMAPIKey(process.env.GCM_SERVER_KEY);
 	webpush.setVapidDetails(
-	  'mailto:lachlan.ross@salesforce.com',
+	  'mailto:'+process.env.YOUR_EMAIL_ADDRESS,
 	  vapidKeys.publicKey,
 	  vapidKeys.privateKey
 	);
@@ -221,7 +221,7 @@ exports.execute = function( req, res ) {
 	var pushNotification = {
 		  title: title,
 	      body: body,
-	      icon: '/images/icon-192x192.png',
+	      icon: icon,
 	      tag: tag
 	};
 

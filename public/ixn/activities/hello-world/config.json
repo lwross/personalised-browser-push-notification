@@ -2,8 +2,8 @@
    "workflowApiVersion": "1.1",
    "metaData": {
       "version": "2.1",
-       "icon": "images/jb-icon.jpg",
-       "iconSmall": "images/jb-icon.jpg",
+       "icon": "images/jb-icon.png",
+       "iconSmall": "images/jb-icon.png",
        "category": "messaging"
    },
    "type": "REST",
@@ -17,11 +17,11 @@
        "execute": {
            "inArguments": [
                 {"myInArgument": "inArgument coming from config json"},
-                { "eventData":"{{Context.PublicationId}}"},
-                { "emailAddress": "{{InteractionDefaults.Email}}"} ,
-                { "subscriptionID":"{{Contact.Attribute.BrowserPushSubscribers.SubscriptionID}}"},
-                { "auth":"{{Contact.Attribute.BrowserPushSubscribers.AuthKey}}"},
-                { "p256dh":"{{Contact.Attribute.BrowserPushSubscribers.p256dhKey}}"}     
+                {"eventData":"{{Context.PublicationId}}"},
+                {"emailAddress": "{{InteractionDefaults.Email}}"} ,
+                {"subscriptionID":"{{Contact.Attribute.BrowserPushSubscribers.SubscriptionID}}"},
+                {"auth":"{{Contact.Attribute.BrowserPushSubscribers.AuthKey}}"},
+                {"p256dh":"{{Contact.Attribute.BrowserPushSubscribers.p256dhKey}}"}     
            ],
 
            "outArguments": [],
