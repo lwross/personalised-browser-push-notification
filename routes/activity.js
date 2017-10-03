@@ -85,7 +85,8 @@ function isEmptyObject(obj) {
 };
 
 /*
- * POST Handler for /execute/ route of Activity.
+ * POST Handler for /execute/ route of Activity. This is where the
+ * web push is executed
  */
 exports.execute = function( req, res ) {
 	console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
@@ -105,9 +106,6 @@ exports.execute = function( req, res ) {
 	//console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
 	//console.log('oArgs',JSON.stringify(oArgs));
 	//console.log('token',req.session.token);
-
-
-//////////////////////////// START WEB PUSH //////////////////////////
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
@@ -162,9 +160,7 @@ exports.execute = function( req, res ) {
 	    console.log('Promise statusCode',res.statusCode);
 	  });
 
-	res.send( 200, body );
-//////////////////////////// END WEB PUSH //////////////////////////
-	
+	res.send( 200, body );	
 };
 
 /*

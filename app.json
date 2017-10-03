@@ -5,20 +5,8 @@
   "keywords": ["journey", "builder", "marketing", "cloud", "custom", "activity", "salesforce"],
   "logo": "http://image.s6.exacttarget.com/lib/fe9112727360007b77/m/1/Salesforce_Marketing_Cloud.png",
   "env": {
-  	"REQUEST_METHOD":{
-  		"required":false
-  	},
-  	"REQUEST_URL":{
-  		"required":false
-  	},
-  	"REQUEST_HEADERS":{
-  		"required":false
-  	},
-  	"REQUEST_BODY":{
-  		"required":false
-  	},
   	"APP_NAME":null,
-  	"KEY":null,
+  	"APP_CENTER_KEY":null,
   	"ACTIVITY_NAME":{
   		"required":false
   	},
