@@ -16,7 +16,7 @@ exports.index = function(req, res){
     } else {
     */
         res.render( 'index', {
-            title: 'Hello World Custom Interaction Example',
+            title: 'Web Push Custom Interaction Example',
             results: activity.logExecuteData,
         });
     //}
