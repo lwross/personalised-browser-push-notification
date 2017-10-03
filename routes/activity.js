@@ -1,29 +1,12 @@
 //'use strict';
 
-// Deps
+// Dependencies
 var util = require( 'util' );
-//var parseString = require('xml2js').parseString;
-//var underscore = require('underscore');
-//var request = require('request');
-
 var webpush = require('web-push');
 
 // VAPID keys should only be generated only once.
 var vapidKeys = webpush.generateVAPIDKeys();
 
-//var twilio = require('twilio')('ACCOUNT_SID', 'AUTH_TOKEN');
-//var requestify = require('requestify');
-//var ET_Client = require( 'fuelsdk-node' );
-
-//var http = require('http');
-//var ws = require('ws.js');
-//var Http = ws.Http;
-//var Security = ws.Security;
-//var UsernameToken = ws.UsernameToken;
-
-//var JWT = require('../lib/jwtDecoder');
-
-// test for heroku pipelines http-activity-dev
 exports.logExecuteData = [];
 
 function logData( req, http_result ) {
@@ -124,11 +107,11 @@ exports.execute = function( req, res ) {
 	//console.log('token',req.session.token);
 
 
-////////////////////////////START BROWSER PUSH//////////////////////////
+//////////////////////////// START WEB PUSH //////////////////////////
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
-	var title = oArgs.title || "Browser Push Notification";
+	var title = oArgs.title || "Web Push Notification";
 	var body = oArgs.body || "Hello There";
 	var tag = oArgs.tag || "";
 	var icon = oArgs.icon || "/images/icon-192x192.png";
@@ -180,7 +163,7 @@ exports.execute = function( req, res ) {
 	  });
 
 	res.send( 200, body );
-////////////////////////////END BROWSER PUSH//////////////////////////
+//////////////////////////// END WEB PUSH //////////////////////////
 	
 };
 

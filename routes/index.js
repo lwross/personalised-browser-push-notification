@@ -16,7 +16,7 @@ exports.index = function(req, res){
     } else {
     */
         res.render( 'index', {
-            title: 'Browser Push Custom Interaction Example',
+            title: 'Web Push Custom Interaction Example',
             results: activity.logExecuteData,
         });
     //}

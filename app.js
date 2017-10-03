@@ -10,7 +10,6 @@ var routes      = require('./routes');
 var activity    = require('./routes/activity');
 var trigger     = require('./routes/trigger');
 var config      = require('./config/default');
-//var parseString = require('xml2js').parseString;
 var fs = require('fs');
 var pkgjson = require( './package.json' );
 
@@ -22,7 +21,7 @@ var configjson  = require('./public/ixn/activities/hello-world/config.json');
 var indexhtml;
 fs.readFile('./public/ixn/activities/hello-world/index.html', "utf-8", function(err, html) {
 	var configVars = ['ACTIVITY_NAME','ACTIVITY_DESCRIPTION','REQUEST_METHOD','REQUEST_URL'];
-	if (!process.env.ACTIVITY_NAME) process.env.ACTIVITY_NAME = 'Browser Push';
+	if (!process.env.ACTIVITY_NAME) process.env.ACTIVITY_NAME = 'Web Push';
 	if (!process.env.ACTIVITY_DESCRIPTION) process.env.ACTIVITY_DESCRIPTION = 'This Activity will send a web browser push notification.';
 	for (var i=0;i<configVars.length;i++) {
 		var search = new RegExp('{{'+configVars[i]+'}}', 'g');
