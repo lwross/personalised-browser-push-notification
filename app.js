@@ -110,9 +110,6 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	json.edit.url = configjson.edit.url.replace(search,process.env[appName]);
 	search = new RegExp('{{'+actKey+'}}', 'g');
 	json.configurationArguments.applicationExtensionKey = configjson.configurationArguments.applicationExtensionKey.replace(search,process.env[actKey]);
-	
-    console.log(json.arguments.execute.inArguments[3].subscriptionID);
-    console.log(configjson.arguments.execute.inArguments[3].subscriptionID);
 
     search = new RegExp('{{'+regDEName+'}}', 'g');
     json.arguments.execute.inArguments[3].subscriptionID = configjson.arguments.execute.inArguments[3].subscriptionID.replace(search,process.env[regDEName]);
@@ -125,7 +122,6 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	json.lang['en-US'].description = configjson.lang['en-US'].description.replace(search,process.env[actDesc]);	
 	res.status(200).send( json );
 });
-
 
 app.get( '/version', function( req, res ) {
     res.setHeader( 'content-type', 'application/json' );
