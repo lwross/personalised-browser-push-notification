@@ -1,12 +1,29 @@
 //'use strict';
 
-// Dependencies
+// Deps
 var util = require( 'util' );
+var parseString = require('xml2js').parseString;
+var underscore = require('underscore');
+var request = require('request');
+
 var webpush = require('web-push');
 
 // VAPID keys should only be generated only once.
 var vapidKeys = webpush.generateVAPIDKeys();
 
+//var twilio = require('twilio')('ACCOUNT_SID', 'AUTH_TOKEN');
+var requestify = require('requestify');
+var ET_Client = require( 'fuelsdk-node' );
+
+var http = require('http');
+var ws = require('ws.js');
+var Http = ws.Http;
+var Security = ws.Security;
+var UsernameToken = ws.UsernameToken;
+
+var JWT = require('../lib/jwtDecoder');
+
+// test for heroku pipelines http-activity-dev
 exports.logExecuteData = [];
 
 function logData( req, http_result ) {
@@ -61,6 +78,7 @@ function logData( req, http_result ) {
 }
 
 
+
 /*
  * POST Handler for / route of Activity (this is the edit route).
  */
@@ -75,8 +93,8 @@ exports.edit = function( req, res ) {
  */
 exports.save = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
-    //console.log('req.body', req.body );
-    //console.log('vapidKeys', vapidKeys);
+    console.log('req.body', req.body );
+    console.log('vapidKeys', vapidKeys);
     res.send( 200, 'Save' );
 };
 
@@ -84,13 +102,66 @@ function isEmptyObject(obj) {
   return !Object.keys(obj).length;
 };
 
+function headersToJSON() {
+	var hdrs = decodeURIComponent(process.env.REQUEST_HEADERS).split(',');
+	var json = {};
+	for (var i=0;i<hdrs.length-1;i+=2) {
+		if (hdrs[i] != '' && hdrs[i+1] != '') {
+			json[ hdrs[i] ] = hdrs[i+1];
+		}
+	}
+	return isEmptyObject(json) ? {} : json;
+};
+
+function isMC_API(url) {
+	var res;
+	var u = url.toLowerCase();
+	if (u.indexOf('exacttargetapis') > -1) {
+		res = 'rest'
+	} else if (u.indexOf('exacttarget') > -1) {
+		res = 'soap'
+	}
+	return res;
+};
+
 /*
- * POST Handler for /execute/ route of Activity. This is where the
- * web push is executed
+ * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function( req, res ) {
 	console.log('body',util.inspect(req.body, {showHidden: false, depth: null}));
 	//console.log('body',JSON.stringify(req.body));
+	
+	
+
+	/*
+	tests:
+	non-MC
+		http://api.openweathermap.org/data/2.5/weather?zip=10001,us&appid=2de143494c0b295cca9337e1e96b00e0	
+	MC-rest
+		https://www.exacttargetapis.com/platform/v1/tokenContext
+	MC-soap
+		https://webservice.s7.exacttarget.com:443/Service.asmx
+	soap body:
+		<?xml version="1.0"?>
+		<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://exacttarget.com/wsdl/partnerAPI">
+		<soap:Header>
+			<fueloauth xmlns="http://exacttarget.com">{{token}}</fueloauth>
+		</soap:Header>
+		<soap:Body>
+			<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">
+			  <RetrieveRequest>
+				<ObjectType>AccountUser</ObjectType>
+				<Properties>Name</Properties>
+				<Properties>UserID</Properties>
+				<!--<Properties>AssociatedBusinessUnits</Properties>-->
+			  </RetrieveRequest>
+			</RetrieveRequestMsg>
+		</soap:Body>
+		</soap:Envelope>	
+	soap headers:
+		Content-Type: text/xml
+		SOAPAction: Retrieve
+	*/
 	
 	//merge the array of objects.
 	var aArgs = (req.body && req.body.inArguments) ? req.body.inArguments : [];
@@ -103,13 +174,16 @@ exports.execute = function( req, res ) {
 		}
 	}	
 
-	//console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
-	//console.log('oArgs',JSON.stringify(oArgs));
+	console.log('oArgs',util.inspect(oArgs, {showHidden: false, depth: null}));
+	console.log('oArgs',JSON.stringify(oArgs));
 	//console.log('token',req.session.token);
+
+
+////////////////////////////START BROWSER PUSH//////////////////////////
 
 	var vapidKeys = webpush.generateVAPIDKeys();
 
-	var title = oArgs.title || "Web Push Notification";
+	var title = oArgs.title || "Browser Push Notification";
 	var body = oArgs.body || "Hello There";
 	var tag = oArgs.tag || "";
 	var icon = oArgs.icon || "/images/icon-192x192.png";
@@ -160,7 +234,67 @@ exports.execute = function( req, res ) {
 	    console.log('Promise statusCode',res.statusCode);
 	  });
 
-	res.send( 200, body );	
+	res.send( 200, body );
+////////////////////////////END BROWSER PUSH//////////////////////////
+	
+
+	var CLIENT_ID = 'myclientid';
+	var CLIENT_SECRET = 'myclientsecret';
+	var body = decodeURIComponent(process.env.REQUEST_BODY);
+	var options = {
+		url: decodeURIComponent(process.env.REQUEST_URL),
+	  	headers: headersToJSON(),
+	  	method: decodeURIComponent(process.env.REQUEST_METHOD)
+	};	
+	if (body && (body !== 'undefined') && (body.trim() !== '')) options.body = body;
+	var IET_Client = new ET_Client(CLIENT_ID,CLIENT_SECRET);
+	var mctype = isMC_API(options.url);
+	if (mctype) {
+		IET_Client.FuelAuthClient.getAccessToken(IET_Client.FuelAuthClient, function(err, body) {	
+			if (err) {
+				logData( req, err );
+				res.send( 500, err );					
+			} else {
+				if (mctype === 'rest') {
+					options.headers.Authorization = 'Bearer ' + body.accessToken;
+				} else {
+					/*
+					  <Header>
+						<fueloauth xmlns="http://exacttarget.com">{{token}}</fueloauth>
+					  </Header>					
+					*/
+					if (options.body) options.body = options.body.replace('{{token}}',body.accessToken);
+				}
+				//request.debug = true;
+				try {
+					request(options, function (error, response, body) {
+						if (error) {
+							logData( req, error );
+							res.send( 500, error );
+						} else {
+							logData( req, response );
+							res.send( 200, body );
+						}
+					});				
+				} catch(e) {
+					logData( req, e );
+					res.send( 500, e );				
+				}										
+			}
+		});				
+	} else {
+		request(options, function (error, response, body) {
+			if (error) {
+				logData( req, error );
+				res.send( 500, error );
+			} else {
+				logData( req, response );			
+				res.send( 200, body );
+			}
+		});			
+	}
+	
+	
 };
 
 /*

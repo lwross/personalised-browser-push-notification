@@ -1,7 +1,7 @@
 {
    "workflowApiVersion": "1.1",
    "metaData": {
-      "version": "2.1",
+      "version": "1.2.2",
        "icon": "images/jb-icon.png",
        "iconSmall": "images/jb-icon.png",
        "category": "messaging"
@@ -38,7 +38,7 @@
        "applicationExtensionKey": "{{APP_CENTER_KEY}}",
        "defaults": { "example_default_key": "example_default_value"},
        "save": {
-           "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",
+           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",
 		   "verb": "POST",
 			"body": "",
             "format": "json",
