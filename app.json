@@ -37,6 +37,10 @@
     "YOUR_EMAIL_ADDRESS": {
       "description": "Your email address.  Used by the message encryption engine",
       "required": "true"
+    },
+    "PUSH_REGISTRATION_DE_NAME": {
+      "description": "DE Name of Marketing Cloud Data Extension used to store web push registrations",
+      "required": "true"
     }
   }
 }
