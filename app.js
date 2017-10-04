@@ -111,10 +111,10 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	search = new RegExp('{{'+actKey+'}}', 'g');
 	json.configurationArguments.applicationExtensionKey = configjson.configurationArguments.applicationExtensionKey.replace(search,process.env[actKey]);
 	
-    search = new RegExp(regDEName, 'g');
-    json.arguments.execute.inArguments[subscriptionID] = configjson.arguments.execute.inArguments.subscriptionID.replace(search,process.env[regDEName]);
-    json.arguments.execute.inArguments[auth] = configjson.arguments.execute.inArguments.auth.replace(search,process.env[regDEName]);
-    json.arguments.execute.inArguments[p256dh] = configjson.arguments.execute.inArguments.p256dh.replace(search,process.env[regDEName]);
+    search = new RegExp('{{'+regDEName+'}}', 'g');
+    json.arguments.execute.inArguments[3].subscriptionID = configjson.arguments.execute.inArguments.subscriptionID.replace(search,process.env[regDEName]);
+    json.arguments.execute.inArguments[4].auth = configjson.arguments.execute.inArguments.auth.replace(search,process.env[regDEName]);
+    json.arguments.execute.inArguments[5].p256dh = configjson.arguments.execute.inArguments.p256dh.replace(search,process.env[regDEName]);
 
     search = new RegExp('{{'+actName+'}}', 'g');
 	json.lang['en-US'].name = configjson.lang['en-US'].name.replace(search,process.env[actName]);	

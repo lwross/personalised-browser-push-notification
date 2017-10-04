@@ -19,9 +19,9 @@
                 {"myInArgument": "inArgument coming from config json"},
                 {"eventData":"{{Context.PublicationId}}"},
                 {"emailAddress": "{{InteractionDefaults.Email}}"} ,
-                {"subscriptionID":"{{Contact.Attribute.BrowserPushSubscribers.SubscriptionID}}"},
-                {"auth":"{{Contact.Attribute.BrowserPushSubscribers.AuthKey}}"},
-                {"p256dh":"{{Contact.Attribute.BrowserPushSubscribers.p256dhKey}}"}     
+                {"subscriptionID":"{{Contact.Attribute.{{PUSH_REGISTRATION_DE_NAME}}.SubscriptionID}}"},
+                {"auth":"{{Contact.Attribute.{{PUSH_REGISTRATION_DE_NAME}}.AuthKey}}"},
+                {"p256dh":"{{Contact.Attribute.{{PUSH_REGISTRATION_DE_NAME}}.p256dhKey}}"}     
            ],
 
            "outArguments": [],
