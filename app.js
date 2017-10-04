@@ -100,6 +100,7 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	var actKey = 'APP_CENTER_KEY';
 	var actName = 'ACTIVITY_NAME';
 	var actDesc = 'ACTIVITY_DESCRIPTION';
+    var regDEName = 'PUSH_REGISTRATION_DE_NAME';
 	var search = new RegExp('{{'+appName+'}}', 'g');
 	var json = JSON.parse(JSON.stringify(configjson)); //clone it.
 	json.arguments.execute.url = configjson.arguments.execute.url.replace(search,process.env[appName]);
@@ -109,13 +110,18 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	json.edit.url = configjson.edit.url.replace(search,process.env[appName]);
 	search = new RegExp('{{'+actKey+'}}', 'g');
 	json.configurationArguments.applicationExtensionKey = configjson.configurationArguments.applicationExtensionKey.replace(search,process.env[actKey]);
-	search = new RegExp('{{'+actName+'}}', 'g');
+
+    search = new RegExp('{{'+regDEName+'}}', 'g');
+    json.arguments.execute.inArguments[3].subscriptionID = configjson.arguments.execute.inArguments[3].subscriptionID.replace(search,process.env[regDEName]);
+    json.arguments.execute.inArguments[4].auth = configjson.arguments.execute.inArguments[4].auth.replace(search,process.env[regDEName]);
+    json.arguments.execute.inArguments[5].p256dh = configjson.arguments.execute.inArguments[5].p256dh.replace(search,process.env[regDEName]);
+
+    search = new RegExp('{{'+actName+'}}', 'g');
 	json.lang['en-US'].name = configjson.lang['en-US'].name.replace(search,process.env[actName]);	
 	search = new RegExp('{{'+actDesc+'}}', 'g');
 	json.lang['en-US'].description = configjson.lang['en-US'].description.replace(search,process.env[actDesc]);	
 	res.status(200).send( json );
 });
-
 
 app.get( '/version', function( req, res ) {
     res.setHeader( 'content-type', 'application/json' );
