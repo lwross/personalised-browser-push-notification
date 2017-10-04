@@ -111,8 +111,8 @@ app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
 	search = new RegExp('{{'+actKey+'}}', 'g');
 	json.configurationArguments.applicationExtensionKey = configjson.configurationArguments.applicationExtensionKey.replace(search,process.env[actKey]);
 	
-    console.log(json.arguments.execute.inArguments);
-    console.log(configjson.arguments.execute.inArguments);
+    console.log(json.arguments.execute.inArguments[3]);
+    console.log(configjson.arguments.execute.inArguments[3]);
 /*
     search = new RegExp('{{'+regDEName+'}}', 'g');
     json.arguments.execute.inArguments[3].subscriptionID = configjson.arguments.execute.inArguments[3].subscriptionID.replace(search,process.env[regDEName]);
