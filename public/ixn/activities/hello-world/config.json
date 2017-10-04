@@ -35,33 +35,33 @@
        }
    },
    "configurationArguments": {
-       "applicationExtensionKey": "{{APP_CENTER_KEY}}",
-       "defaults": { "example_default_key": "example_default_value"},
-       "save": {
-           "url": "https://{{APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",
-		   "verb": "POST",
-			"body": "",
+        "applicationExtensionKey": "{{APP_CENTER_KEY}}",
+        "defaults": { "example_default_key": "example_default_value"},
+        "save": {
+        "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/save",
+		    "verb": "POST",
+        "body": "",
             "format": "json",
             "useJwt": false
-       },
-       "publish": {
-           "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/publish",
-		   "verb": "POST",
-			"body": "",
+        },
+        "publish": {
+        "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/publish",
+		    "verb": "POST",
+			   "body": "",
             "format": "json",
             "useJwt": false
-       },
-       "validate": {
-           "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/validate",
-		   "verb": "POST",
-			"body": "",
+        },
+        "validate": {
+        "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/validate",
+		    "verb": "POST",
+			  "body": "",
             "format": "json",
             "useJwt": false
-       }
+        }
    },
    "edit": {
-		"url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/",
-		"height": 400,
-		"width": 500
+		  "url": "https://{{HEROKU_APP_NAME}}.herokuapp.com/ixn/activities/hello-world/",
+		  "height": 400,
+		  "width": 500
 	}
 }
