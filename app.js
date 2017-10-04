@@ -10,6 +10,7 @@ var routes      = require('./routes');
 var activity    = require('./routes/activity');
 var trigger     = require('./routes/trigger');
 var config      = require('./config/default');
+var parseString = require('xml2js').parseString;
 var fs = require('fs');
 var pkgjson = require( './package.json' );
 
