@@ -96,7 +96,7 @@ app.post('/ixn/activities/hello-world/execute', activity.execute );
 
 //replace template values with environment variables.
 app.get( '/ixn/activities/hello-world/config.json', function( req, res ) {
-	var appName = 'APP_NAME';
+	var appName = 'HEROKU_APP_NAME';
 	var actKey = 'APP_CENTER_KEY';
 	var actName = 'ACTIVITY_NAME';
 	var actDesc = 'ACTIVITY_DESCRIPTION';
